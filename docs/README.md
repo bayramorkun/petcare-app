@@ -1,10 +1,11 @@
 
 # PetCare
 
-PetCare ist eine Web-App, die Haustierbesitzer mit Personen verbindet, die eine zeitweise Haustierbetreuung anbieten möchten. 
-Haustierbesitzer können Betreuungsanfragen mit Angaben zum Haustier, Zeitraum und Ort veröffentlichen.  Haustierbetreuer können offene Anfragen einsehen und bei Interesse mit einer optionalen Nachricht darauf reagieren.
+PetCare ist eine Web-App zur Vermittlung von Haustierbetreuung, die Besitzer von Hunden und Katzen mit potenziellen Betreuern verbindet.
 
-![attractive app screenshot](assets/images/fswd-intro_00.png)
+Haustierbesitzer können Betreuungsanfragen veröffentlichen und sich anhand persönlicher Betreuerprofile über Bewerber informieren. Haustierbetreuer können eigene Profile erstellen und sich mit einer optionalen Nachricht auf passende Anfragen bewerben.
+
+Nach erfolgreicher Vermittlung können beide Parteien ihre freigegebenen Kontaktdaten einsehen, um die Betreuung abzusprechen. Ein Benutzerkonto kann dabei für beide Nutzerrollen verwendet werden.
 
 ---
 
