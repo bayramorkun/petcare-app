@@ -1,12 +1,5 @@
 [← Contributors](README.md)
 
-> [!CAUTION]
-> Create a separate, individual file for every team member, proposed naming scheme: `📄firstname-lastname.md`.
->
-> *Find and replace* (VS Code: <kbd>Ctrl</kbd>+<kbd>H</kbd> / <kbd>⌘</kbd>+<kbd>H</kbd>) `Jane Dane` with the student's name. On this template page, you will find this name 3 times (including in this `!CAUTION` box). 
->
-> You may delete this `!CAUTION` box.
-
 # Orkun Bayram
 
 ## Meta-Goals
