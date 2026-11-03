@@ -2,8 +2,17 @@
 
 # Contributors
 
-[List all team members like so:
 
--  [Jane Dane](jane-dane.md)
+[← Documentation Home](../README.md)
+
+# Contributors
+
+**Teamname:** PetCare
+
+## Teammitglieder
+
+- [Orkun Bayram](Orkun-Bayram.md)
+- [Arian Ismaili](Arian-Ismaili.md)
+- [Ilja Makarchuk](Ilja-Makarchuk.md)
 
 ]
