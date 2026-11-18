@@ -58,3 +58,51 @@ CREATE TABLE IF NOT EXISTS sitter_profiles (
 );
 
 COMMIT;
+
+
+-- 3. Haustierprofile
+CREATE TABLE IF NOT EXISTS pets (
+    id INTEGER PRIMARY KEY,
+    owner_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    species TEXT NOT NULL
+        CHECK (species IN ('dog', 'cat')),
+    breed TEXT,
+    age_years INTEGER
+        CHECK (age_years >= 0),
+    special_notes TEXT,
+
+    FOREIGN KEY (owner_id)
+        REFERENCES users(id)
+        ON DELETE RESTRICT
+);
+
+-- 4. Betreuungsanfragen
+CREATE TABLE IF NOT EXISTS care_requests (
+    id INTEGER PRIMARY KEY,
+    pet_id INTEGER NOT NULL,
+    start_date TEXT NOT NULL,
+    end_date TEXT NOT NULL,
+    city TEXT NOT NULL,
+    description TEXT,
+    selected_sitter_id INTEGER,
+    created_at TEXT NOT NULL
+        DEFAULT CURRENT_TIMESTAMP,
+
+    CHECK (start_date <= end_date),
+
+    FOREIGN KEY (pet_id)
+        REFERENCES pets(id)
+        ON DELETE RESTRICT,
+
+    FOREIGN KEY (selected_sitter_id)
+        REFERENCES users(id)
+        ON DELETE RESTRICT
+);
+
+-- Indizes fuer haeufige Datenbankabfragen
+CREATE INDEX IF NOT EXISTS idx_pets_owner
+    ON pets(owner_id);
+
+CREATE INDEX IF NOT EXISTS idx_requests_pet
+    ON care_requests(pet_id);
