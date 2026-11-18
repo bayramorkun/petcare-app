@@ -57,8 +57,6 @@ CREATE TABLE IF NOT EXISTS sitter_profiles (
         ON DELETE CASCADE
 );
 
-COMMIT;
-
 
 -- 3. Haustierprofile
 CREATE TABLE IF NOT EXISTS pets (
@@ -130,3 +128,5 @@ CREATE TABLE IF NOT EXISTS applications (
 -- Index fuer Bewerbungen eines Betreuers
 CREATE INDEX IF NOT EXISTS idx_applications_sitter
     ON applications(sitter_id);
+
+    COMMIT;
