@@ -106,3 +106,27 @@ CREATE INDEX IF NOT EXISTS idx_pets_owner
 
 CREATE INDEX IF NOT EXISTS idx_requests_pet
     ON care_requests(pet_id);
+
+-- 5. Bewerbungen auf Betreuungsanfragen
+CREATE TABLE IF NOT EXISTS applications (
+    id INTEGER PRIMARY KEY,
+    request_id INTEGER NOT NULL,
+    sitter_id INTEGER NOT NULL,
+    message TEXT,
+    created_at TEXT NOT NULL
+        DEFAULT CURRENT_TIMESTAMP,
+
+    UNIQUE (request_id, sitter_id),
+
+    FOREIGN KEY (request_id)
+        REFERENCES care_requests(id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (sitter_id)
+        REFERENCES users(id)
+        ON DELETE RESTRICT
+);
+
+-- Index fuer Bewerbungen eines Betreuers
+CREATE INDEX IF NOT EXISTS idx_applications_sitter
+    ON applications(sitter_id);
