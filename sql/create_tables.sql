@@ -111,8 +111,23 @@ CREATE TABLE IF NOT EXISTS applications (
     request_id INTEGER NOT NULL,
     sitter_id INTEGER NOT NULL,
     message TEXT,
+
+    -- Status der Bewerbung
+    status TEXT NOT NULL DEFAULT 'pending'
+        CHECK (status IN ('pending', 'accepted', 'rejected', 'withdrawn')),
+
     created_at TEXT NOT NULL
         DEFAULT CURRENT_TIMESTAMP,
+
+-- Zeitpunkt der Entscheidung (angenommen, abgelehnt oder zurückgezogen)
+    decided_at TEXT,
+
+-- Offene Bewerbung haben kein Entscheidungszeitpunkt
+    CHECK ( (status ='pending' AND decided_at IS NULL)
+            OR
+            (status <> 'pending' AND decided_at IS NOT NULL)
+    ),
+
 
     UNIQUE (request_id, sitter_id),
 
@@ -129,4 +144,9 @@ CREATE TABLE IF NOT EXISTS applications (
 CREATE INDEX IF NOT EXISTS idx_applications_sitter
     ON applications(sitter_id);
 
-    COMMIT;
+-- Pro Anfrage hoechstens eine akzeptierte Bewerbung
+CREATE UNIQUE INDEX IF NOT EXISTS idx_applications_one_accepted
+    ON applications(request_id)
+    WHERE status = 'accepted';
+
+COMMIT;
